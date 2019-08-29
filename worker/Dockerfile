@@ -36,7 +36,11 @@ RUN \
     # so we need to simulate that here.  See https://github.com/Yelp/dumb-init
     curl https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64.deb -Lo /tmp/init.deb && dpkg -i /tmp/init.deb &&\
     # ubuntu pip version has issues so we should use the official upstream version it: https://github.com/pypa/pip/pull/3287
-    # apt-get install -y openjdk-8-jdk pkg-config zip g++ zlib1g-dev unzip bazel && \
+    # echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list &&\
+    # 
+    curl https://bazel.build/bazel-release.pub.gpg | apt-key add - &&\
+    apt-get update &&\
+    apt-get install -y openjdk-8-jdk pkg-config zip g++ zlib1g-dev unzip && \
     easy_install3 pip && \
     # Install required python packages, and twisted
     pip --no-cache-dir install 'twisted[tls]' && \
