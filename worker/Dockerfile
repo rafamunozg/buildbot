@@ -40,7 +40,7 @@ RUN \
     # 
     curl https://bazel.build/bazel-release.pub.gpg | apt-key add - &&\
     apt-get update &&\
-    apt-get install -y openjdk-8-jdk pkg-config zip g++ zlib1g-dev unzip && \
+    apt-get install -y openjdk-8-jdk pkg-config zip g++ zlib1g-dev unzip python-dev python-setuptools software-properties-common && \
     easy_install3 pip && \
     # Install required python packages, and twisted
     pip --no-cache-dir install 'twisted[tls]' && \
